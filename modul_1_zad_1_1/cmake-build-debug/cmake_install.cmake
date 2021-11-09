@@ -1,4 +1,4 @@
-# Install script for directory: /Users/aleksandr/Documents/modul_1_zad_1_1
+# Install script for directory: /Users/aleksandr/Documents/Algoritms/modul_1_zad_1_1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/aleksandr/Documents/modul_1_zad_1_1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/aleksandr/Documents/Algoritms/modul_1_zad_1_1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

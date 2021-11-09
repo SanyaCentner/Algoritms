@@ -57,10 +57,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/aleksandr/Documents/modul_1_zad_1_1
+CMAKE_SOURCE_DIR = /Users/aleksandr/Documents/Algoritms/modul_1_zad_1_1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/aleksandr/Documents/modul_1_zad_1_1/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/aleksandr/Documents/Algoritms/modul_1_zad_1_1/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aleksandr/Documents/modul_1_zad_1_1/cmake-build-debug/CMakeFiles /Users/aleksandr/Documents/modul_1_zad_1_1/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aleksandr/Documents/Algoritms/modul_1_zad_1_1/cmake-build-debug/CMakeFiles /Users/aleksandr/Documents/Algoritms/modul_1_zad_1_1/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aleksandr/Documents/modul_1_zad_1_1/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aleksandr/Documents/Algoritms/modul_1_zad_1_1/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named untitled1
+# Target rules for targets named modul_1_zad_1_1
 
 # Build rule for target.
-untitled1: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 untitled1
-.PHONY : untitled1
+modul_1_zad_1_1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 modul_1_zad_1_1
+.PHONY : modul_1_zad_1_1
 
 # fast build rule for target.
-untitled1/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled1.dir/build.make CMakeFiles/untitled1.dir/build
-.PHONY : untitled1/fast
+modul_1_zad_1_1/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/modul_1_zad_1_1.dir/build.make CMakeFiles/modul_1_zad_1_1.dir/build
+.PHONY : modul_1_zad_1_1/fast
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled1.dir/build.make CMakeFiles/untitled1.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/modul_1_zad_1_1.dir/build.make CMakeFiles/modul_1_zad_1_1.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -142,7 +142,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled1.dir/build.make CMakeFiles/untitled1.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/modul_1_zad_1_1.dir/build.make CMakeFiles/modul_1_zad_1_1.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -150,7 +150,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled1.dir/build.make CMakeFiles/untitled1.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/modul_1_zad_1_1.dir/build.make CMakeFiles/modul_1_zad_1_1.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -161,7 +161,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... untitled1"
+	@echo "... modul_1_zad_1_1"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

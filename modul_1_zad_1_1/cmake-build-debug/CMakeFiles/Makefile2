@@ -54,16 +54,16 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/aleksandr/Documents/modul_1_zad_1_1
+CMAKE_SOURCE_DIR = /Users/aleksandr/Documents/Algoritms/modul_1_zad_1_1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/aleksandr/Documents/modul_1_zad_1_1/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/aleksandr/Documents/Algoritms/modul_1_zad_1_1/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/untitled1.dir/all
+all: CMakeFiles/modul_1_zad_1_1.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/untitled1.dir/clean
+clean: CMakeFiles/modul_1_zad_1_1.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/untitled1.dir
+# Target rules for target CMakeFiles/modul_1_zad_1_1.dir
 
 # All Build rule for target.
-CMakeFiles/untitled1.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled1.dir/build.make CMakeFiles/untitled1.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled1.dir/build.make CMakeFiles/untitled1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aleksandr/Documents/modul_1_zad_1_1/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target untitled1"
-.PHONY : CMakeFiles/untitled1.dir/all
+CMakeFiles/modul_1_zad_1_1.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/modul_1_zad_1_1.dir/build.make CMakeFiles/modul_1_zad_1_1.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/modul_1_zad_1_1.dir/build.make CMakeFiles/modul_1_zad_1_1.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aleksandr/Documents/Algoritms/modul_1_zad_1_1/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target modul_1_zad_1_1"
+.PHONY : CMakeFiles/modul_1_zad_1_1.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/untitled1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aleksandr/Documents/modul_1_zad_1_1/cmake-build-debug/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/untitled1.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aleksandr/Documents/modul_1_zad_1_1/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/untitled1.dir/rule
+CMakeFiles/modul_1_zad_1_1.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aleksandr/Documents/Algoritms/modul_1_zad_1_1/cmake-build-debug/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/modul_1_zad_1_1.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aleksandr/Documents/Algoritms/modul_1_zad_1_1/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/modul_1_zad_1_1.dir/rule
 
 # Convenience name for target.
-untitled1: CMakeFiles/untitled1.dir/rule
-.PHONY : untitled1
+modul_1_zad_1_1: CMakeFiles/modul_1_zad_1_1.dir/rule
+.PHONY : modul_1_zad_1_1
 
 # clean rule for target.
-CMakeFiles/untitled1.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled1.dir/build.make CMakeFiles/untitled1.dir/clean
-.PHONY : CMakeFiles/untitled1.dir/clean
+CMakeFiles/modul_1_zad_1_1.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/modul_1_zad_1_1.dir/build.make CMakeFiles/modul_1_zad_1_1.dir/clean
+.PHONY : CMakeFiles/modul_1_zad_1_1.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
