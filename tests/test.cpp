@@ -37,7 +37,7 @@ TEST(test, test3) {
 int n = 3;
 int m = 5;
 int A[] = {10, 20, 22};
-int B[] = {8, 23, 15, 20, 32};
+int B[] = {-1, 23, 15, 20, 32};
 
 int k_range[2];
 std::string result;
