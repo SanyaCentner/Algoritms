@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++ -g -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names --coverage CMakeFiles/tests.dir/test.cpp.o CMakeFiles/tests.dir/__/src/func.cpp.o -o tests  ../lib/libgtestd.a /usr/local/lib/libgtest.a -lpthread 
