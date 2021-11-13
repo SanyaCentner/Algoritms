@@ -18,15 +18,15 @@
 
 #include <iostream>
 
-template <typename T>
+template<typename T>
 class Deque {
 public:
     //конструктор по умолчанию
-    Deque() : count(0),  size(8), buffer(new T[size]), head(0), tail(0) {};
+    Deque() : count(0), size(8), buffer(new T[size]), head(0), tail(0) {};
 
-    Deque(size_t size) : count(0),  size(size), buffer(new T[size]), head(0), tail(0) {};
+    Deque(size_t size) : count(0), size(size), buffer(new T[size]), head(0), tail(0) {};
 
-    ~Deque<T>() {delete[] buffer;};
+    ~Deque<T>() { delete[] buffer; };
 
     bool is_empty() const { return (count == size); }
 
@@ -42,7 +42,7 @@ public:
         temp = nullptr;
     }
 
-    void shift(const T elem){
+    void shift(const T elem) {
         T *temp;
         temp = new T[count + 1];
         for (int i = 0; i < count + 1; i++) {
@@ -56,7 +56,8 @@ public:
         buffer = temp;
         temp = nullptr;
     }
-    int delete_head(){
+
+    int delete_head() {
         T *temp;
         temp = new T[count - 1];
         int top = buffer[0];
@@ -118,11 +119,11 @@ public:
 private:
     int count;
     int size;
-    T* buffer;
+    T *buffer;
     int head;
     int tail;
-
 };
+
 
 //void run(std::istream& in, std::ostream& out) {
 //    Deque<int> deq;
