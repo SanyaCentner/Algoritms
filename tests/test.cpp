@@ -34,10 +34,10 @@ ASSERT_EQ("0 0 0 2 ", result);
 }
 
 TEST(test, test3) {
-int n = 3;
-int m = 5;
-int A[] = {10, 20, 22};
-int B[] = {-1, 23, 15, 20, 32};
+int n = 10;
+int m = 1;
+int A[] = {21, 30, 31, 41, 46, 56, 65, 71, 78, 87};
+int B[] = {35};
 
 int k_range[2];
 std::string result;
@@ -46,7 +46,7 @@ find_k(B[i], A, n, k_range);
 int search_result = binary(A, k_range[0], k_range[1], n, B[i]);
 result += std::to_string(min_number(A, search_result, B[i], n)) + " ";
 }
-ASSERT_EQ("0 2 0 1 2 ", result);
+ASSERT_EQ("2 ", result);
 }
 
 

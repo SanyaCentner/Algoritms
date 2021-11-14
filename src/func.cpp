@@ -21,12 +21,11 @@ void find_k(const int elem, const int *mas, int count, int k[2]) {
                 k[0] = k_range_one;
                 k[1] = count - 1;
                 return;
+            } else if (elem < mas[i * 2 - 1]) {
+                k[0] = k_range_one;
+                k[1] = i * 2 - 1;
+                return;
             }
-
-        } else if (elem < mas[i * 2 - 1]) {
-            k[0] = k_range_one;
-            k[1] = i * 2 - 1;
-            return;
         }
         k_range_one = i;
     }

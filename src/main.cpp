@@ -7,25 +7,29 @@
 #include "func.h"
 
 int main() {
-    int n = 0;
-    std::cin >> n;
-    int *A = new int[n];
-    for (int i = 0; i < n; ++i) {
-        std::cin >> A[i];
-    }
-    int m = 0;
-    std::cin >> m;
-    int *B = new int[m];
-    for (int i = 0; i < m; ++i) {
-        std::cin >> B[i];
-    }
+//    int n = 0;
+//    std::cin >> n;
+//    int *A = new int[n];
+//    for (int i = 0; i < n; ++i) {
+//        std::cin >> A[i];
+//    }
+//    int m = 0;
+//    std::cin >> m;
+//    int *B = new int[m];
+//    for (int i = 0; i < m; ++i) {
+//        std::cin >> B[i];
+//    }
+    int n = 10;
+    int m = 1;
+    int A[] = {21, 30, 31, 41, 46, 56, 65, 71, 78, 87};
+    int B[] = {35};
     for (int i = 0; i < m; ++i) {
         int k[2] = {};
         find_k(B[i], A, n, k);
         int search_result = binary(A, k[0], k[1], n, B[i]);
         std::cout << min_number(A, search_result, B[i], n) << " ";
     }
-    delete[] A;
-    delete[] B;
+//    delete[] A;
+//    delete[] B;
     return 0;
 }
