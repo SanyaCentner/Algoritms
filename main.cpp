@@ -20,195 +20,143 @@
 
 #include <iostream>
 
-//struct Process {
-//     P{0};
-//    size_t T{0};
-//    size_t t{0};
-//    size_t value() const { return P * (t + 1); }
-//};
-//
-//
-//struct Point {
-//    Point()
-//            : x(0), y(0) {
-//
-//    }
-//
-//    Point(int x, int y)
-//            : x(x), y(y) {
-//
-//    }
-//
-//    int x, y;
-//};
-//
-//std::istream &operator>>(std::istream &in, Point &p) {
-//    in >> p.x >> p.y;
-//    return in;
-//}
-//
-//std::ostream &operator<<(std::ostream &out, Point &p) {
-//    out << "(" << p.x << ", " << p.y << ")";
-//    return out;
-//}
-//
-//bool operator<(const Point &l, const Point &r) {
-//    return l.x < r.x;
-//}
-//
-//bool pointXComparator(const Point &l, const Point &r) {
-//    return l.x < r.x;
-//}
-//
-//bool pointYComparator(const Point &l, const Point &r) {
-//    return l.x < r.x;
-//}
-//
-//template <typename T>
-//bool defaultComparator(const T &l, const T &r) {
-//    return l < r;
-//}
-//
-//template <typename T>
-//class DefaultComparator {
-//public:
-//    bool operator()(const T &l, const T&r) const {
-//        return l < r;
-//    }
-//};
-//
-//
-//template <typename T>
-//void mySort(T *arr, int l, int r, bool (*cmp)(const T&, const T&) = defaultComparator) {
-//    for (int i = l; i < r; ++i) {
-//        for (int j = l; j < r - 1; ++j) {
-//            if (cmp(arr[j + 1], arr[j])) {
-//                std::swap(arr[j + 1], arr[j]);
-//            }
-//        }
-//    }
-//}
-//
-//template <typename T, typename Comparator>
-//void mySort2(T *arr, int l, int r, Comparator cmp) {
-//    for (int i = l; i < r; ++i) {
-//        for (int j = l; j < r - 1; ++j) {
-//            if (cmp(arr[j + 1], arr[j])) {
-//                std::swap(arr[j + 1], arr[j]);
-//            }
-//        }
-//    }
-//}
-int binary_search(const int *mas, int first, int last, int count) {
-    while (first < last) {
-        int mid = (first + last) / 2;
-        if (mid != 0) {
-            if (mas[mid - 1] > mas[mid]) {
-                return mid;
-            } else {
-                last = mid;
-            }
-        } else {
-            if (mas[mid] < mas[count - 1]) {
-                return mid;
-            } else if ((mas[count - 1] < mas[mid]) && (mas[count - 2] >= mas[count - 1])) {
-                return count - 1;
-            } else {
-                first = (first + count) / 2;
-                last = count;
-            }
-        }
+using std::endl, std::cin, std::cout;
 
-    }
-//
-//    return first;
-}
+struct Process {
+    int P;
+    int T;
+    int t;
 
-#include <iostream>
+    int value() const { return P * (t + 1); }
+};
 
-class STACK {
+class Default_Comparator {
 public:
-    int count;
-    int size;
-    int *node;
-
-    // конструктор по умолчанию
-    STACK() : count(0), size(8), node(new int[size]) {};
-
-    STACK(size_t size) : count(0), size(size), node(new int[size]) {};
-
-    /* Деструктор */
-    ~STACK() {
-        delete[] node;
+    bool operator()(const Process &one, const Process &two) const {
+        return one.value() < two.value();
     }
+};
 
-    void resize(int new_size) {
-        int *temp;
-        temp = new int[new_size];
-        for (int i = 0; i < count; i++) temp[i] = node[i];
+template<class T, class Comparator = Default_Comparator>
+class Heap {
+public:
+    Heap(T *_buffer, int _count) : buffer(_buffer), count(_count), size(0) {
+        buildHeap(_count);
+    };
+
+    ~Heap() { delete[] buffer;}
+
+    bool is_empty() const { return count == 0; }
+
+    const T &min() const { return buffer[0]; }
+
+    void resize() {
+        int new_size = count * 2;
+        T *temp = new T[new_size];
+        for (int i = 0; i < count; i++) {
+            temp[i] = buffer[i];
+        }
+        delete[] buffer;
+        buffer = temp;
         size = new_size - count;
-        delete[] node;
-        node = temp;
         temp = nullptr;
     }
 
-    void push(int x) {
-        if (size != 0) {
-            node[count] = x;
-            count++;
-            size--;
-        } else {
-            resize(count * 2);
-            return push(x);
+    void pop() {
+        assert(!is_empty());
+        auto result = buffer[0];
+        buffer[0] = std::move(buffer[--count]);
+        size++;
+        if (!is_empty()) {
+            siftDown(0);
         }
+    };
 
+    void push(const T &&element) {
+        if (size == 0) {
+            resize();
+            return push(std::move(element));
+        }
+        buffer[count++] = element;
+        size--;
+        siftUp(count - 1);
     }
 
-    int pop() {
-        if (size == 0) {
-            return 0; // стек пуст
+private:
+    T *buffer;
+    int count;
+    int size;
+
+    Heap(const Heap &) = delete;
+
+    Heap &operator=(const Heap &) = delete;
+
+    Heap &operator=(Heap &&) = delete;
+
+    Comparator cmp;
+
+    void siftUp(int child) {
+        if (child != 0) {
+            int parent = (child - 1) / 2;
+            if (parent > 0) {
+                if (cmp(buffer[parent], buffer[child])) {
+                    return;
+                }
+                std::swap(buffer[child], buffer[parent]);
+                child = parent;
+            }
         }
-        size++;
-        count--;
-        return node[count];
+    }
+
+    void siftDown(int parent) {
+        int child_left = 2 * parent + 1;
+        int child_right = 2 * parent + 2;
+        int min = parent;
+        if (child_left < count && cmp(buffer[child_left], buffer[parent])) {
+            min = child_left;
+        } else if (child_right < count && cmp(buffer[child_right], buffer[parent])) {
+            min = child_right;
+        }
+        if (min != parent) {
+            std::swap(buffer[parent], buffer[min]);
+            siftDown(min);
+        }
+    }
+
+    void buildHeap(int count) {
+        for (int i = 0; i < count; ++i) {
+            siftDown(i);
+        }
     }
 };
+
+void Processing(Heap<Process> &&processes) {
+    int switchings = 0;
+    while (!processes.is_empty()) {
+        switchings++;
+
+        Process min = processes.min();
+        processes.pop();
+        min.t += min.P;
+        if (min.t < min.T) {
+            processes.push(std::move(min));
+        }
+    }
+    std::cout << switchings;
+}
 
 
 int main() {
     int n = 0;
-//    std::cin >> n;
-//    int *arr = new int[n];
-//    for (int i = 0; i < n; ++i) {
-//        std::cin >> arr[i];
-//    }
-//
-//    int bandera[7] = {1, 21, 22, 23, 24, 25, 2};
-//    int kek = binary_search(bandera, 0, 7, 7);
-//    std::cout << kek;
-
-//    mySort2(arr, 0, n, DefaultComparator<int>());
-//    for (int i = 0; i < n; ++i) {
-//        std::cout << arr[i] << " ";
-//    }
-//    delete[] arr;
-//    std::cout << std::endl;
-    int size = 800000;
-    STACK stack(size);
-    char c;
-    while (((c = getchar()) != '\n') && (c != '\0')) {
-        if (c == '(') {
-            stack.push(1);
-        } else if (c == ')') {
-            stack.pop();
-            if (stack.count < 0)
-                break;
-        }
+    std::cin >> n;
+    auto array = new Process[n];
+    for (int i = 0; i < n; i++) {
+        int P = 0;
+        int T = 0;
+        std::cin >> P >> T;
+        Process Proc{P, T, 0};
+        array[i] = Proc;
     }
-    if (stack.count == 0) {
-        std::cout << "YES";
-    } else {
-        std::cout << "NO";
-    }
+    Processing(Heap<Process>(array, n));
     return 0;
 }
