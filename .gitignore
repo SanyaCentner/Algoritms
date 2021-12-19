@@ -1,4 +1,5 @@
 .idea
-cmale-build-debug
+cmake-build-debug
+.DS_Store
 
 
