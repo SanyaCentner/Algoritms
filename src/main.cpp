@@ -14,42 +14,51 @@
 #include "utils.h"
 
 int main() {
-    ListGraph list(6);
+    ListGraph list(7);
 
-    list.add_edge(0, 1);
-    list.add_edge(1, 2);
-    list.add_edge(1, 5);
-    list.add_edge(2, 3);
-    list.add_edge(3, 4);
-    list.add_edge(4, 2);
+    list.AddEdge(0, 1);
+    list.AddEdge(0, 5);
+    list.AddEdge(1, 2);
+    list.AddEdge(1, 3);
+    list.AddEdge(1, 5);
+    list.AddEdge(1, 6);
+    list.AddEdge(3, 2);
+    list.AddEdge(3, 4);
+    list.AddEdge(3, 6);
+    list.AddEdge(5, 4);
+    list.AddEdge(5, 6);
+    list.AddEdge(6, 4);
 
-    bfs(list, [](int v) {
-        std::cout << v << std::endl;
+    std::cout << "List" << std::endl;
+    BFS(list, [](int vertex) {
+        std::cout  <<  vertex << std::endl;
     });
-    std::cout << "------------------" << std::endl;
 
-    assert(list.vertices_count() == 6);
+    assert(list.VerticesCount() == 7);
 
     MatrixGraph matr(list);
-    bfs(matr, [](int v) {
-        std::cout << v << std::endl;
+    std::cout << "Matrix" << std::endl;
+    BFS(matr, [](int vertex) {
+        std::cout << vertex << std::endl;
     });
-    std::cout << "------------------" << std::endl;
-    assert(matr.vertices_count() == 6);
+
+    assert(matr.VerticesCount() == 7);
 
     ArcGraph arc(matr);
-    bfs(arc, [](int v) {
-        std::cout << v << std::endl;
+    std::cout << "Arc" << std::endl;
+    BFS(arc, [](int vertex) {
+        std::cout << vertex << std::endl;
     });
-    std::cout << "------------------" << std::endl;
-    assert(arc.vertices_count() == 6);
+
+    assert(arc.VerticesCount() == 7);
 
     SetGraph set(arc);
-    bfs(arc, [](int v) {
-        std::cout << v << std::endl;
+    std::cout << "Set" << std::endl;
+    BFS(arc, [](int vertex) {
+        std::cout << vertex << std::endl;
     });
-    std::cout << "------------------" << std::endl;
-    assert(set.vertices_count() == 6);
+
+    assert(set.VerticesCount() == 7);
 
     return 0;
 }

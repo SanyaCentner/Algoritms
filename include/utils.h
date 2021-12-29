@@ -5,6 +5,6 @@
 
 #include "IGraph.h"
 
-void bfs(const IGraph& graph, const std::function<void(int)>& callback);
+void BFS(const IGraph& graph, const std::function<void(int)>& func);
 
 #endif //ALGORITMS_UTILS_H

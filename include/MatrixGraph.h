@@ -6,17 +6,17 @@
 
 class MatrixGraph: public IGraph {
 public:
-    explicit MatrixGraph(size_t vertices_count);
+    explicit MatrixGraph(int size);
 
     explicit MatrixGraph(const IGraph& igraph);
 
-    virtual void add_edge(int from, int to) override;
+    virtual void AddEdge(int from, int to) override;
 
-    virtual int vertices_count() const override;
+    virtual int VerticesCount() const override;
 
-    virtual std::vector<int> get_next_vertices(int vertex) const override;
+    virtual std::vector<int> GetNextVertices(int vertex) const override;
 
-    virtual std::vector<int> get_prev_vertices(int vertex) const override;
+    virtual std::vector<int> GetPrevVertices(int vertex) const override;
 
 private:
     std::vector<std::vector<int>> graph;

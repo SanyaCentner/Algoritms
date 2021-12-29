@@ -1,35 +1,38 @@
 #include "MatrixGraph.h"
 #include "utils.h"
 
-MatrixGraph::MatrixGraph(size_t vertices_count) {
-    graph.resize(vertices_count);
+MatrixGraph::MatrixGraph(int size) {
+    graph.resize(size);
     for (auto gr: graph) {
-        gr.resize(vertices_count);
+        gr.resize(size);
     }
 }
 
 MatrixGraph::MatrixGraph(const IGraph &igraph) {
-    graph.resize(igraph.vertices_count());
+    graph.resize(igraph.VerticesCount());
     for (auto &gr: graph) {
-        gr.resize(igraph.vertices_count());
+        gr.resize(igraph.VerticesCount());
     }
-    bfs(igraph, [&](int v) {
-        std::vector<int> next = igraph.get_next_vertices(v);
+    BFS(igraph, [&](int v) {
+        std::vector<int> next = igraph.GetNextVertices(v);
         for (auto i: next) {
             graph[v][i] = 1;
         }
     });
 }
 
-void MatrixGraph::add_edge(int from, int to) {
+void MatrixGraph::AddEdge(int from, int to) {
+    assert( from >= 0 && from < graph.size());
+    assert( to >= 0 && to < graph.size());
     graph[from][to] = 1;
 }
 
-int MatrixGraph::vertices_count() const {
+int MatrixGraph::VerticesCount() const {
     return graph.size();
 }
 
-std::vector<int> MatrixGraph::get_next_vertices(int vertex) const {
+std::vector<int> MatrixGraph::GetNextVertices(int vertex) const {
+    assert(vertex >= 0 && vertex < graph.size());
     std::vector<int> result;
     for (int i = 0; i < graph[vertex].size(); ++i) {
         if (graph[vertex][i]) {
@@ -39,7 +42,8 @@ std::vector<int> MatrixGraph::get_next_vertices(int vertex) const {
     return result;
 }
 
-std::vector<int> MatrixGraph::get_prev_vertices(int vertex) const {
+std::vector<int> MatrixGraph::GetPrevVertices(int vertex) const {
+    assert(vertex >= 0 && vertex < graph.size());
     std::vector<int> result;
     for (int i = 0; i < graph.size(); ++i) {
         if (graph[i][vertex]) {
