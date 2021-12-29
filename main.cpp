@@ -46,7 +46,7 @@ void BFS(const IGraph& graph, const std::function<void(int)>& func) {
 
 class ListGraph : public IGraph {
 public:
-    explicit ListGraph(int  size);
+    explicit ListGraph(int size);
 
     explicit ListGraph(const IGraph& igraph);
 
@@ -54,7 +54,7 @@ public:
 
     virtual int VerticesCount() const override;
 
-    virtual std::vector<int> GetNextVertices(int vertex) const  override;
+    virtual std::vector<int> GetNextVertices(int vertex) const override;
 
     virtual std::vector<int> GetPrevVertices(int vertex) const override;
 
@@ -75,13 +75,15 @@ ListGraph::ListGraph(const IGraph &igraph) {
         for (auto i: next) {
             graph[v].push_back(i);
         }
-    });
+    }
+    );
 }
 
 void ListGraph::AddEdge(int from, int to) {
     assert(from >= 0 && from < graph.size());
     assert(to >= 0 && to < graph.size());
     graph[from].push_back(to);
+    graph[to].push_back(from);
 }
 
 int ListGraph::VerticesCount() const {
@@ -90,7 +92,10 @@ int ListGraph::VerticesCount() const {
 
 std::vector<int> ListGraph::GetNextVertices(int vertex) const {
     assert( vertex >= 0 && vertex < graph.size());
-    return graph[vertex];
+    std::vector<int> result;
+    result.resize(graph[vertex].size());
+    std::copy(graph[vertex].begin(), graph[vertex].end(), result.begin());
+    return result;
 }
 
 std::vector<int> ListGraph::GetPrevVertices(int vertex) const {
@@ -110,11 +115,11 @@ std::vector<int> ListGraph::GetPrevVertices(int vertex) const {
 
 int count_ways(const IGraph& graph, const int begin, const int end) {
     std::vector<int> ways;
-    std::vector<int> dist;
+    std::vector<int> deep;
     std::vector<bool> visited;
     std::queue<int> queue;
     ways.resize(graph.VerticesCount(), 0);
-    dist.resize(graph.VerticesCount(), 0);
+    deep.resize(graph.VerticesCount(),0);
     visited.resize(graph.VerticesCount(), false);
     for (int i = 0; i < graph.VerticesCount(); ++i) {
         if (i == begin) {
@@ -123,14 +128,14 @@ int count_ways(const IGraph& graph, const int begin, const int end) {
             while (!queue.empty()) {
                 int vertex = queue.front();
                 queue.pop();
-                for (auto child : graph.GetNextVertices(vertex)) {
-                    if (!visited[child]) {
-                        queue.push(child);
-                        ways[child] += ways[vertex];
-                        dist[child] += dist[vertex] + 1;
-                        visited[child] = true;
-                    } else if (dist[child] == dist[vertex] + 1) {
-                        ways[child] += ways[vertex];
+                for (auto nextVertex : graph.GetNextVertices(vertex)) {
+                    if (!visited[nextVertex]) {
+                        queue.push(nextVertex);
+                        ways[nextVertex] += ways[vertex];
+                        deep[nextVertex] += deep[vertex] + 1;
+                        visited[nextVertex] = true;
+                    } else if (deep[nextVertex] == deep[vertex] + 1) {
+                        ways[nextVertex] += ways[vertex];
                     }
                 }
             }
